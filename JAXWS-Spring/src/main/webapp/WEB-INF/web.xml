@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <display-name>JAXWS-Spring</display-name>
+    <listener>
+        <listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
+    </listener>
+    <servlet>
+        <servlet-name>jaxws-servlet</servlet-name>
+        <servlet-class>
+	    com.sun.xml.ws.transport.http.servlet.WSSpringServlet
+	</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MyWebService</servlet-name>
+        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>jaxws-servlet</servlet-name>
+        <url-pattern>/jaxws-spring</url-pattern>
+    </servlet-mapping>
+    <!-- Register Spring Listener -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <servlet-mapping>
+        <servlet-name>MyWebService</servlet-name>
+        <url-pattern>/MyWebService</url-pattern>
+    </servlet-mapping>
+</web-app>
